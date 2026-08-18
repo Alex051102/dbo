@@ -8,6 +8,7 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
+    publicPath: '/dbo/', // ← ЭТО ГЛАВНОЕ
   },
   devServer: {
     port: 3000,
@@ -27,9 +28,6 @@ module.exports = {
         },
       },
     ],
-  },
-  output: {
-    publicPath: '/dbo/',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
