@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+
 import { loginUser } from '../actions/authActions';
 
 class LoginForm extends React.Component {
@@ -20,7 +20,9 @@ class LoginForm extends React.Component {
     try {
       await this.props.dispatch(loginUser({ login, password }));
       this.props.onLoginSuccess();
-    } catch {}
+    } catch (error) {
+      console.error('Login error:', error);
+    }
   }
 
   render() {
@@ -59,5 +61,4 @@ const mapStateToProps = (state) => ({
   isLoading: state.auth.isLoading,
   error: state.auth.error,
 });
-
-export default connect(mapStateToProps)(LoginForm);
+export default DashboardPageWithNavigate;
