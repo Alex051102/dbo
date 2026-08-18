@@ -28,6 +28,9 @@ module.exports = {
       },
     ],
   },
+  output: {
+    publicPath: '/dbo/',
+  },
   resolve: {
     extensions: ['.js', '.jsx'],
   },

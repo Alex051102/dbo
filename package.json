@@ -1,10 +1,11 @@
 {
   "name": "dbo",
   "version": "1.0.0",
+  "homepage": "https://Alex051102.github.io/dbo/",
   "description": "ДБО — монолит на классовых компонентах",
   "scripts": {
     "start": "webpack serve",
-    "build": "npx webpack --mode production",
+    "build": "webpack --mode production",
     "lint": "eslint src/**/*.{js,jsx}",
     "lint:fix": "eslint src/**/*.{js,jsx} --fix",
     "format": "prettier --write src/**/*.{js,jsx,json}",
