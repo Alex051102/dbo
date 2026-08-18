@@ -1,64 +1,47 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../actions/authActions';
 
-class LoginForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { login: '', password: '' };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
+const LoginForm = ({ onLoginSuccess }) => {
+  const dispatch = useDispatch();
+  const { isLoading, error } = useSelector((state) => state.auth);
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
 
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
-  async handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const { login, password } = this.state;
     try {
-      await this.props.dispatch(loginUser({ login, password }));
-      this.props.onLoginSuccess();
+      await dispatch(loginUser({ login, password }));
+      onLoginSuccess();
     } catch (error) {
       console.error('Login error:', error);
     }
-  }
+  };
 
-  render() {
-    const { login, password } = this.state;
-    const { isLoading, error } = this.props;
-    return (
-      <div className="module">
-        <h2>🔐 Вход в ДБО</h2>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            name="login"
-            value={login}
-            onChange={this.handleChange}
-            placeholder="Логин"
-            disabled={isLoading}
-          />
-          <input
-            name="password"
-            type="password"
-            value={password}
-            onChange={this.handleChange}
-            placeholder="Пароль"
-            disabled={isLoading}
-          />
-          {error && <div className="error">{error}</div>}
-          <button type="submit" disabled={isLoading}>
-            {isLoading ? 'Загрузка...' : 'Войти'}
-          </button>
-        </form>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="module">
+      <h2>🔐 Вход в ДБО</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          value={login}
+          onChange={(e) => setLogin(e.target.value)}
+          placeholder="Логин"
+          disabled={isLoading}
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Пароль"
+          disabled={isLoading}
+        />
+        {error && <div className="error">{error}</div>}
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? 'Загрузка...' : 'Войти'}
+        </button>
+      </form>
+    </div>
+  );
+};
 
-const mapStateToProps = (state) => ({
-  isLoading: state.auth.isLoading,
-  error: state.auth.error,
-});
-export default DashboardPageWithNavigate;
+export default LoginForm;

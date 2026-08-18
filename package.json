@@ -1,7 +1,7 @@
 {
   "name": "dbo",
   "version": "1.0.0",
-  "homepage": "https://Alex051102.github.io/dbo/",
+  "homepage": "https://Alex051102.github.io/",
   "description": "ДБО — монолит на классовых компонентах",
   "scripts": {
     "start": "webpack serve",
