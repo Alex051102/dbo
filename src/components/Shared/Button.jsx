@@ -28,7 +28,8 @@ class Button extends React.Component {
           cursor: disabled ? 'default' : 'pointer',
           opacity: disabled ? 0.6 : 1,
           ...(styles[variant] || styles.primary),
-        }}>
+        }}
+      >
         {children}
       </button>
     );
