@@ -22,7 +22,7 @@ jobs:
           cache: 'npm'
 
       - name: Устанавливаем зависимости
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       - name: Запускаем ESLint
         run: npm run lint
@@ -45,7 +45,7 @@ jobs:
           cache: 'npm'
 
       - name: Устанавливаем зависимости
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       - name: Запускаем тесты
         run: npm run test:ci
@@ -65,7 +65,7 @@ jobs:
           cache: 'npm'
 
       - name: Устанавливаем зависимости
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       - name: Собираем проект
         run: npm run build
@@ -87,7 +87,7 @@ jobs:
           cache: 'npm'
 
       - name: Устанавливаем зависимости
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       - name: Собираем проект
         run: npm run build
