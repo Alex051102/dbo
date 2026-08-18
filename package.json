@@ -10,8 +10,8 @@
     "lint:fix": "eslint src/**/*.{js,jsx} --fix",
     "format": "prettier --write src/**/*.{js,jsx,json}",
     "format:check": "prettier --check src/**/*.{js,jsx,json}",
-    "test": "jest",
-    "test:ci": "jest --coverage --watchAll=false"
+    "test": "jest --env=jsdom",
+    "test:ci": "jest --env=jsdom --coverage --watchAll=false"
   },
   "dependencies": {
     "react": "^18.2.0",
